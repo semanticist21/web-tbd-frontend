@@ -7,6 +7,9 @@ interface ButtonProps extends PropsWithChildren, IComponent {
   onClick?: () => void
 }
 
+/**
+ * @link https://preline.co/docs/buttons.html
+ */
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className: classNames, children, onClick }: ButtonProps, ref) => {
     return (
