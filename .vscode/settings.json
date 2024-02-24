@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["clsx", "Parens", "tailwindcss", "trivago"],
+  "cSpell.words": ["clsx", "Parens", "tailwindcss", "trivago", "Twotone"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": false,
