@@ -3,6 +3,7 @@
 import Button from '@/components/common/button'
 import Input from '@/components/common/input'
 import InputPassword from '@/components/common/input_password'
+import LinkSmall from '@/components/common/link_small'
 import Link from 'next/link'
 import { PiLockKeyThin } from 'react-icons/pi'
 import { PiFinnTheHumanThin } from 'react-icons/pi'
@@ -25,28 +26,18 @@ const LoginPage = () => {
             icon={<PiLockKeyThin />}
           />
 
-          <Link
-            className="text-blue-500 text-xs text-left hover:opacity-75"
-            href="/"
-          >
-            비밀번호를 잊으셨나요?
-          </Link>
+          <LinkSmall href="/" content="비밀번호를 잊으셨나요?" />
         </div>
-        <Button
-          className="flex justify-center w-full mt-4"
-          onClick={() => {}}
-        >
+        <Button className="flex justify-center w-full mt-4" onClick={() => {}}>
           로그인 하기
         </Button>
 
-        <p className="text-xs mt-2 text-center">
-          <span className="">아이디가 없으신가요?</span>
-          <Link href="/signup">
-            <span className="text-blue-500 hover:opacity-75">
-              &nbsp; 회원가입 하기
-            </span>
-          </Link>
-        </p>
+        <LinkSmall
+          className="mt-3 text-center"
+          href="/"
+          preDescription="아이디가 없으신가요?"
+          content="회원가입 하기"
+        />
 
         <div className="mt-auto flex flex-col space-y-3">
           <button className="bg-[#4267B2] h-12 rounded-md flex text-white items-center p-2 text-sm hover:opacity-90 border border-transparent">
