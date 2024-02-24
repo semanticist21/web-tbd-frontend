@@ -1,8 +1,17 @@
 {
-  "cSpell.words": ["clsx", "Parens", "tailwindcss", "trivago", "Twotone"],
+  "cSpell.words": [
+    "clsx",
+    "kakao",
+    "Naver",
+    "Parens",
+    "tailwindcss",
+    "trivago",
+    "Twotone"
+  ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": false,
   "prettier.useTabs": true,
-  "prettier.configPath": "./.prettierrc.cjs"
+  "prettier.configPath": "./.prettierrc.cjs",
+  "svg.preview.background": "editor"
 }

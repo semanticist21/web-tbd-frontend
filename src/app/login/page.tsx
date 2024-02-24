@@ -1,10 +1,11 @@
 'use client'
 
+import KakaoLogo from '@/assets/svg/kakao.svg'
+import NaverLogo from '@/assets/svg/naver.svg'
 import Button from '@/components/common/button'
 import Input from '@/components/common/input'
 import InputPassword from '@/components/common/input_password'
 import LinkSmall from '@/components/common/link_small'
-import Link from 'next/link'
 import { PiLockKeyThin } from 'react-icons/pi'
 import { PiFinnTheHumanThin } from 'react-icons/pi'
 
@@ -26,9 +27,15 @@ const LoginPage = () => {
             icon={<PiLockKeyThin />}
           />
 
-          <LinkSmall href="/" content="비밀번호를 잊으셨나요?" />
+          <LinkSmall
+            href="/"
+            content="비밀번호를 잊으셨나요?"
+          />
         </div>
-        <Button className="flex justify-center w-full mt-4" onClick={() => {}}>
+        <Button
+          className="flex justify-center w-full mt-4"
+          onClick={() => {}}
+        >
           로그인 하기
         </Button>
 
@@ -40,12 +47,14 @@ const LoginPage = () => {
         />
 
         <div className="mt-auto flex flex-col space-y-3">
-          <button className="bg-[#4267B2] h-12 rounded-md flex text-white items-center p-2 text-sm hover:opacity-90 border border-transparent">
-            <div className="flex-1 text-center">페이스북으로 로그인</div>
+          <button className="relative bg-bg-naver h-12 rounded-md text-white text-sm hover:opacity-90 border border-transparent">
+            <NaverLogo class="absolute left-4 top-4 bottom-0" />
+            네이버로 시작하기
           </button>
 
-          <button className="bg-white h-12 rounded-md flex items-center p-2 text-sm border border-gray-500 hover:opacity-90 text-gray-500">
-            <div className="flex-1 text-center">구글로 로그인</div>
+          <button className="relative bg-bg-kakao text-fg-kakao  h-12 rounded-md p-2 text-sm hover:opacity-90 ">
+            <KakaoLogo class="absolute left-4 top-4 bottom-0 w-5 h-5" />
+            카카오로 시작하기
           </button>
         </div>
       </div>
