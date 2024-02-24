@@ -21,9 +21,9 @@
 }
 
 body {
-  color: rgb(var(--fg-rgb));
   background: linear-gradient(to bottom, transparent, rgb(var(--bg-end-rgb)))
     rgb(var(--bg-start-rgb));
+  color: rgb(var(--fg-rgb));
 }
 
 @layer utilities {

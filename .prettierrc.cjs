@@ -11,6 +11,7 @@ module.exports = {
     require.resolve('prettier-plugin-tailwindcss'),
     require.resolve('@trivago/prettier-plugin-sort-imports'),
     require.resolve('prettier-plugin-organize-attributes'),
+    require.resolve('prettier-plugin-css-order'),
   ],
 
   tailwindFunctions: ['clsx', 'cn'],

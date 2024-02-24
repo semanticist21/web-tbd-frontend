@@ -32,7 +32,10 @@ const LoginPage = () => {
             비밀번호를 잊으셨나요?
           </Link>
         </div>
-        <Button className="flex justify-center w-full mt-4" onClick={() => {}}>
+        <Button
+          className="flex justify-center w-full mt-4"
+          onClick={() => {}}
+        >
           로그인 하기
         </Button>
 
