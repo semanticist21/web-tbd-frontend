@@ -1,4 +1,4 @@
-import { IComponent } from '@/interface/IComponent'
+import { IComponent } from '@/interface/i_component'
 import { cn } from '@/util/cn'
 import { ClassValue } from 'clsx'
 import { PropsWithChildren, forwardRef } from 'react'
