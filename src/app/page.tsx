@@ -1,3 +1,3 @@
 export default function Home() {
-  return <main className="tw-min-h-dvh tw-text-balance"></main>
+  return <main className="min-h-dvh text-balance"></main>
 }
