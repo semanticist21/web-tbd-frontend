@@ -48,12 +48,12 @@ const LoginPage = () => {
 
         <div className="mt-auto flex flex-col space-y-3">
           <button className="relative bg-bg-naver h-12 rounded-md text-white text-sm hover:opacity-90 border border-transparent">
-            <NaverLogo class="absolute left-4 top-4 bottom-0" />
+            <NaverLogo className="absolute left-4 top-4 bottom-0" />
             네이버로 시작하기
           </button>
 
           <button className="relative bg-bg-kakao text-fg-kakao  h-12 rounded-md p-2 text-sm hover:opacity-90 ">
-            <KakaoLogo class="absolute left-4 top-4 bottom-0 w-5 h-5" />
+            <KakaoLogo className="absolute left-4 top-4 bottom-0 w-5 h-5" />
             카카오로 시작하기
           </button>
         </div>
