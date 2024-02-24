@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* import from others */
+@import './font.css';
+@import './typography.css';
+
 :root {
   --fg-rgb: 0, 0, 0;
   --bg-start-rgb: 233, 236, 239;
@@ -26,4 +30,10 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+// typography.css
+h1 {
+  font-size: 2.25rem;
+  font-family: 'anta';
 }
