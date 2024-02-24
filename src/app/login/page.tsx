@@ -12,7 +12,7 @@ import { PiFinnTheHumanThin } from 'react-icons/pi'
 const LoginPage = () => {
   return (
     <div className="h-dvh flex items-center justify-center overflow-auto p-8">
-      <div className="w-96 h-128 bg-white rounded-xl px-8 py-6 border flex flex-col">
+      <div className="md:w-112 md:h-144 w-96 h-136 bg-white rounded-xl md:px-12 md:py-6 px-8 py-6 border flex flex-col">
         <h1 className="text-h1 select-none">Login</h1>
 
         <div className="flex flex-col space-y-4 mt-6">
@@ -47,7 +47,7 @@ const LoginPage = () => {
         />
 
         <div className="mt-auto flex flex-col space-y-3">
-          <button className="relative bg-bg-naver h-12 rounded-md text-white text-sm hover:opacity-90 border border-transparent">
+          <button className="relative bg-bg-naver h-12 rounded-md text-white text-sm hover:opacity-90 border border-transparent text-wrap">
             <NaverLogo className="absolute left-4 top-4 bottom-0" />
             네이버로 시작하기
           </button>
