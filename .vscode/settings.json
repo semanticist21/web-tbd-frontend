@@ -1,0 +1,8 @@
+{
+  "cSpell.words": ["clsx", "Parens", "tailwindcss"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "prettier.useTabs": true,
+  "prettier.configPath": "./.prettierrc"
+}

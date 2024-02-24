@@ -1,0 +1,14 @@
+{
+  "endOfLine": "lf",
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5",
+  "arrowParens": "always",
+
+  "plugins": ["prettier-plugin-tailwindcss", "prettier-plugin-sort-imports"],
+
+  "tailwindFunctions": ["clsx", "cn"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
