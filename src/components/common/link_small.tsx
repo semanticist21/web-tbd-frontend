@@ -10,9 +10,13 @@ interface linkSmallProps extends IComponent {
 }
 
 const LinkSmall = forwardRef<HTMLParagraphElement, linkSmallProps>(
-  ({ className, href, preDescription, content }: linkSmallProps, ref) => {
+  ({ id, className, href, preDescription, content }: linkSmallProps, ref) => {
     return (
-      <p className={cn('text-xs mt-2', className)}>
+      <p
+        className={cn('text-xs mt-2', className)}
+        id={id}
+        ref={ref}
+      >
         <span>{preDescription}</span>
         <Link href={href}>
           <span className="text-blue-500 hover:opacity-75">
