@@ -51,7 +51,7 @@ const CheckBox = forwardRef<HTMLDivElement, checkBoxProps>(
           checked={checked}
         />
         <label
-          className="text-gray-500 ms-3 dark:text-gray-400 text-xs"
+          className="text-gray-500 ms-2 dark:text-gray-400 text-xs"
           htmlFor={iid}
         >
           {label}

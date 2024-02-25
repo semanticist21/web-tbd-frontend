@@ -23,7 +23,5 @@
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "warn",
     "react/react-in-jsx-scope": "off"
-  },
-
-  "eslintIgnore": ["next.config.mjs"]
+  }
 }

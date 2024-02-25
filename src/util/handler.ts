@@ -1,6 +1,23 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react'
 
 // input handler
+export const createHandleSingleInput = (
+  val: string | undefined,
+  setVal: Dispatch<SetStateAction<string | undefined>>
+) => {
+  return (e?: ChangeEvent<HTMLInputElement>) => {
+    setVal(e?.target.value)
+  }
+}
+
+export const createHandleClearSingleInput = (
+  setVal: Dispatch<SetStateAction<string | undefined>>
+) => {
+  return () => {
+    setVal(undefined)
+  }
+}
+
 export const createHandleInput = (
   obj: Record<string, string>,
   setObj: Dispatch<SetStateAction<Record<string, string>>>

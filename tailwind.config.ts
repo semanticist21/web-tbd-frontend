@@ -42,6 +42,7 @@ const config: Config = {
         'bg-naver': '#03C759',
         'bg-kakao': '#FFEB00',
         'fg-kakao': '#3C1E1E',
+        'fg-gray-desc': '#9E9E9E',
       },
     },
   },

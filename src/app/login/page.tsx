@@ -7,6 +7,7 @@ import CheckBox from '@/components/common/checkbox'
 import InputEmail from '@/components/common/input_email'
 import InputPassword from '@/components/common/input_password'
 import LinkSmall from '@/components/common/link_small'
+import { ROUTES } from '@/routes/routes'
 import { KInputLogin, OInputLogin } from '@/types/input_login'
 import { useFormik } from 'formik'
 import { useState } from 'react'
@@ -64,6 +65,7 @@ const LoginPage = () => {
 
             <div className="flex justify-between">
               <CheckBox
+                className="select-none"
                 name={OInputLogin.retain}
                 label="로그인 상태 유지"
                 checked={Boolean(formik.values.retain)}
@@ -71,7 +73,7 @@ const LoginPage = () => {
               />
               <LinkSmall
                 className="mt-0"
-                href="/forgot-password"
+                href={ROUTES.FORGOT_PASSWORD}
                 content="비밀번호를 잊으셨나요?"
               />
             </div>
@@ -87,7 +89,7 @@ const LoginPage = () => {
 
         <LinkSmall
           className="mt-3 text-center"
-          href="/sign-up"
+          href={ROUTES.SIGN_UP}
           preDescription="아이디가 없으신가요?"
           content="회원가입 하기"
         />

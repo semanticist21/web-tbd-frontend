@@ -11,7 +11,7 @@ const InputPartialClearButton = forwardRef<
   HTMLButtonElement,
   InputPartialClearProps
 >(({ name, onClear, visible }, ref) => {
-  if (!visible) return false
+  if (!visible || !onClear) return false
 
   return (
     <button
