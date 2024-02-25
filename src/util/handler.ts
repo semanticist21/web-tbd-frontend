@@ -1,5 +1,6 @@
-import { ChangeEvent, Dispatch, MouseEvent, SetStateAction } from 'react'
+import { ChangeEvent, Dispatch, SetStateAction } from 'react'
 
+// input handler
 export const createHandleInput = (
   obj: Record<string, string>,
   setObj: Dispatch<SetStateAction<Record<string, string>>>
@@ -8,11 +9,11 @@ export const createHandleInput = (
     const name = e?.target.name
     const value = e?.target.value
 
-    if (!name || !value) return
+    if (!name) return
 
     setObj({
       ...obj,
-      [name]: value,
+      [name]: value || '',
     })
   }
 }
@@ -27,6 +28,24 @@ export const createHandleClearInput = (
     setObj({
       ...obj,
       [name]: '',
+    })
+  }
+}
+
+// boolean handler
+export const createHandleCheck = (
+  obj: Record<string, boolean>,
+  setObj: Dispatch<SetStateAction<Record<string, boolean>>>
+) => {
+  return (e?: ChangeEvent<HTMLInputElement>) => {
+    const name = e?.target.name
+    const value = e?.target.checked
+
+    if (!name) return
+
+    setObj({
+      ...obj,
+      [name]: value || false,
     })
   }
 }

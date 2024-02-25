@@ -1,8 +1,9 @@
-import { ChangeEvent, ReactNode } from 'react'
+import { ChangeEventHandler } from 'react'
 
 export interface IInput {
   placeholder?: string
   value?: string
-  onChange?: (e?: ChangeEvent<HTMLInputElement>) => void
+  onChange?: ChangeEventHandler<HTMLInputElement>
   onClear?: (name?: string) => void
+  invalid?: boolean
 }

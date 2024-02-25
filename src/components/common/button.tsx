@@ -1,9 +1,17 @@
 import { IComponent } from '@/interface/i_component'
 import { cn } from '@/util/cn'
-import { PropsWithChildren, ReactNode, forwardRef } from 'react'
+import {
+  FormEventHandler,
+  MouseEventHandler,
+  PropsWithChildren,
+  ReactNode,
+  forwardRef,
+} from 'react'
 
 interface ButtonProps extends PropsWithChildren, IComponent {
-  onClick?: () => void
+  type?: 'button' | 'submit' | 'reset'
+  onClick?: MouseEventHandler<HTMLButtonElement>
+  onSubmit?: FormEventHandler<HTMLButtonElement>
   prefixIcon?: ReactNode
   isLoading?: boolean
   disabled?: boolean
@@ -18,8 +26,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       id,
       name,
       className,
+      type,
       children,
       onClick,
+      onSubmit,
       isLoading,
       prefixIcon,
       disabled,
@@ -34,12 +44,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         id={id}
         name={name}
-        type="button"
+        type={type}
         ref={ref}
         onClick={onClick}
+        onSubmit={onSubmit}
         disabled={isLoading || disabled}
       >
-        {prefixIcon && (
+        {
           <div className="mr-2">
             {isLoading ? (
               <span
@@ -51,7 +62,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               prefixIcon
             )}
           </div>
-        )}
+        }
         {children}
       </button>
     )

@@ -1,8 +1,8 @@
+import InputPartialClearButton from './partial/input_partial_clear'
 import { IComponent } from '@/interface/i_component'
 import { IInput } from '@/interface/i_input'
 import { cn } from '@/util/cn'
 import { ReactNode, forwardRef } from 'react'
-import { AiTwotoneCloseCircle } from 'react-icons/ai'
 
 interface InputProps extends IComponent, IInput {
   icon?: ReactNode
@@ -22,6 +22,7 @@ const InputPassword = forwardRef<HTMLDivElement, InputProps>(
       onChange,
       icon,
       onClear,
+      invalid,
     }: InputProps,
     ref
   ) => {
@@ -31,24 +32,28 @@ const InputPassword = forwardRef<HTMLDivElement, InputProps>(
         ref={ref}
       >
         <input
-          className="peer py-3 pe-0 ps-8 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600 outline-none"
+          className={cn(
+            'peer py-3 pe-0 ps-8 block w-full bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 text-sm focus:border-t-transparent focus:border-x-transparent focus:border-b-blue-500 focus:ring-0 disabled:opacity-50 disabled:pointer-events-none dark:border-b-gray-700 dark:text-gray-400 dark:focus:ring-gray-600 dark:focus:border-b-gray-600 outline-none',
+            invalid && 'border-b-red-500'
+          )}
           id={id}
           name={name}
           type="password"
           value={value}
           placeholder={placeholder}
           onChange={onChange}
+          autoComplete="current-password"
+          required
         />
         <div className="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-2 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
           {icon}
         </div>
         {onClear && value && (
-          <button
-            className="absolute end-1 top-4 flex items-center ps-2 peer-disabled:hidden hover:opacity-50 opacity-80"
-            onClick={() => onClear(name)}
-          >
-            <AiTwotoneCloseCircle />
-          </button>
+          <InputPartialClearButton
+            name={name}
+            onClear={onClear}
+            visible={!!value}
+          />
         )}
       </div>
     )

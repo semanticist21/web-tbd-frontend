@@ -1,10 +1,10 @@
 import { IComponent } from '@/interface/i_component'
 import { cn } from '@/util/cn'
-import { forwardRef, useId } from 'react'
+import { ChangeEventHandler, MouseEventHandler, forwardRef, useId } from 'react'
 
 interface checkBoxProps extends IComponent {
-  onClick?: () => void
-  onChange?: () => void
+  onClick?: MouseEventHandler<HTMLInputElement>
+  onChange?: ChangeEventHandler<HTMLInputElement>
   label?: string
   disabled?: boolean
   checked?: boolean
@@ -33,6 +33,8 @@ const CheckBox = forwardRef<HTMLDivElement, checkBoxProps>(
     return (
       <div
         className={cn('flex', disabled && 'opacity-70', className)}
+        role="checkbox"
+        aria-checked={checked}
         ref={ref}
       >
         <input
