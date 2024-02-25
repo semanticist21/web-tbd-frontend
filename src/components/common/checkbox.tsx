@@ -28,7 +28,7 @@ const CheckBox = forwardRef<HTMLDivElement, checkBoxProps>(
     ref
   ) => {
     const cid = useId()
-    id ??= cid
+    const iid = id || cid
 
     return (
       <div
@@ -43,7 +43,7 @@ const CheckBox = forwardRef<HTMLDivElement, checkBoxProps>(
             className
           )}
           name={name}
-          id={id}
+          id={iid}
           type="checkbox"
           disabled={disabled}
           onClick={onClick}
@@ -52,7 +52,7 @@ const CheckBox = forwardRef<HTMLDivElement, checkBoxProps>(
         />
         <label
           className="text-gray-500 ms-3 dark:text-gray-400 text-xs"
-          htmlFor={id}
+          htmlFor={iid}
         >
           {label}
         </label>

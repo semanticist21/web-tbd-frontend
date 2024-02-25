@@ -50,19 +50,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         onSubmit={onSubmit}
         disabled={isLoading || disabled}
       >
-        {
-          <div className="mr-2">
-            {isLoading ? (
-              <span
-                className="animate-spin inline-block size-4 border-2 border-current border-t-transparent text-white rounded-full top-0.5 relative"
-                role="status"
-                aria-label="loading"
-              />
-            ) : (
-              prefixIcon
-            )}
-          </div>
-        }
+        <div className="mr-2">
+          {isLoading ? (
+            <span
+              className="animate-spin inline-block size-4 border-2 border-current border-t-transparent text-white rounded-full top-0.5 relative"
+              role="status"
+              aria-label="loading"
+            />
+          ) : (
+            prefixIcon
+          )}
+        </div>
         {children}
       </button>
     )

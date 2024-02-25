@@ -9,9 +9,8 @@ import InputPassword from '@/components/common/input_password'
 import LinkSmall from '@/components/common/link_small'
 import { KInputLogin, OInputLogin } from '@/types/input_login'
 import { useFormik } from 'formik'
-import { experimental_useEffectEvent, useCallback, useState } from 'react'
-import { PiLockKeyThin } from 'react-icons/pi'
-import { PiFinnTheHumanThin } from 'react-icons/pi'
+import { useState } from 'react'
+import { PiFinnTheHumanThin, PiLockKeyThin } from 'react-icons/pi'
 
 const LoginPage = () => {
   // state props

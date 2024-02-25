@@ -5,10 +5,10 @@ export const toReadOnly = <T>(...args: T[]) => {
 export const createEmptyObj = <T extends string>(
   ...args: T[]
 ): { [K in T]: K } => {
-  const obj: any = {}
+  const obj = {} as { [K in T]: K }
 
   args.forEach((arg) => {
-    obj[arg] = undefined
+    obj[arg] = arg
   })
 
   return obj
@@ -17,7 +17,7 @@ export const createEmptyObj = <T extends string>(
 export const createMatchingObj = <T extends string>(
   ...args: T[]
 ): { [K in T]: K } => {
-  const obj: any = {}
+  const obj = {} as { [K in T]: K }
 
   args.forEach((arg) => {
     obj[arg] = arg
