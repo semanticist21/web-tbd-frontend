@@ -11,7 +11,7 @@ interface checkBoxProps extends IComponent {
 }
 
 /**
- * @link https://preline.co/docs/input.html
+ * @link https://preline.co/docs/checkbox.html
  */
 const CheckBox = forwardRef<HTMLDivElement, checkBoxProps>(
   (
