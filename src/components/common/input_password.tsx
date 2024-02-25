@@ -1,14 +1,11 @@
 import { IComponent } from '@/interface/i_component'
+import { IInput } from '@/interface/i_input'
 import { cn } from '@/util/cn'
-import { ChangeEvent, ReactNode, forwardRef } from 'react'
+import { ReactNode, forwardRef } from 'react'
 import { AiTwotoneCloseCircle } from 'react-icons/ai'
 
-interface InputProps extends IComponent {
-  placeholder?: string
-  value?: string
-  onChange?: (e?: ChangeEvent<HTMLInputElement>) => void
+interface InputProps extends IComponent, IInput {
   icon?: ReactNode
-  onClear?: () => void
 }
 
 /**
@@ -46,7 +43,10 @@ const InputPassword = forwardRef<HTMLDivElement, InputProps>(
           {icon}
         </div>
         {onClear && value && (
-          <button className="absolute end-1 top-4 flex items-center ps-2 peer-disabled:hidden hover:opacity-50 opacity-80">
+          <button
+            className="absolute end-1 top-4 flex items-center ps-2 peer-disabled:hidden hover:opacity-50 opacity-80"
+            onClick={() => onClear(name)}
+          >
             <AiTwotoneCloseCircle />
           </button>
         )}

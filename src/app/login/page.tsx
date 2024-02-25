@@ -4,29 +4,23 @@ import KakaoLogo from '@/assets/svg/kakao.svg'
 import NaverLogo from '@/assets/svg/naver.svg'
 import Button from '@/components/common/button'
 import CheckBox from '@/components/common/checkbox'
-import Input from '@/components/common/input'
+import InputEmail from '@/components/common/input_email'
 import InputPassword from '@/components/common/input_password'
 import LinkSmall from '@/components/common/link_small'
-import { ChangeEvent, useState } from 'react'
+import { OInputLogin, TInputLogin } from '@/types/input_login'
+import { NullableRecord } from '@/types/type'
+import { createHandleClearInput, createHandleInput } from '@/util/handler'
+import { useState } from 'react'
 import { PiLockKeyThin } from 'react-icons/pi'
 import { PiFinnTheHumanThin } from 'react-icons/pi'
 
 const LoginPage = () => {
   // state props
-  const [inputs, setInputs] = useState({})
+  const [inputs, setInputs] = useState<NullableRecord<TInputLogin>>({})
 
   // handlers
-  const handleInput = (e?: ChangeEvent<HTMLInputElement>) => {
-    const id = e?.target.id
-    const value = e?.target.value
-
-    if (id && value) {
-      setInputs({
-        ...inputs,
-        [id]: value,
-      })
-    }
-  }
+  const inputHandler = createHandleInput(inputs, setInputs)
+  const clearHandler = createHandleClearInput(inputs, setInputs)
 
   return (
     <div className="h-dvh flex items-center justify-center overflow-auto p-8">
@@ -34,25 +28,27 @@ const LoginPage = () => {
         <h1 className="text-h1 select-none">Login</h1>
 
         <div className="flex flex-col space-y-4 mt-6">
-          <Input
+          <InputEmail
+            name={OInputLogin.email}
             placeholder="이메일 ID를 입력하세요."
             icon={<PiFinnTheHumanThin />}
-            onChange={() => {}}
-            onClear={() => {}}
+            onChange={inputHandler}
+            onClear={clearHandler}
           />
 
           <InputPassword
+            name={OInputLogin.password}
             placeholder="패스워드를 입력하세요."
             icon={<PiLockKeyThin />}
-            onChange={() => {}}
-            onClear={() => {}}
+            onChange={inputHandler}
+            onClear={clearHandler}
           />
 
           <div className="flex justify-between">
             <CheckBox label="로그인 상태 유지" />
             <LinkSmall
               className="mt-0"
-              href="/"
+              href="/forgot-password"
               content="비밀번호를 잊으셨나요?"
             />
           </div>
@@ -66,10 +62,14 @@ const LoginPage = () => {
 
         <LinkSmall
           className="mt-3 text-center"
-          href="/signup"
+          href="/sign-up"
           preDescription="아이디가 없으신가요?"
           content="회원가입 하기"
         />
+
+        <p className="text-red-500 text-xs text-center mt-1">
+          아이디가 이메일 형식이 아닙니다.
+        </p>
 
         <div className="mt-auto flex flex-col space-y-3">
           <button className="relative bg-bg-naver h-12 rounded-md text-white text-sm hover:opacity-90 border border-transparent text-wrap">
