@@ -2,34 +2,45 @@
 
 import Button from '@/components/common/button'
 import InputEmail from '@/components/common/input_email'
+import InputPassword from '@/components/common/input_password'
 import LinkSmall from '@/components/common/link_small'
+import TextError from '@/components/common/text_error'
 import { ROUTES } from '@/routes/routes'
-import { OInputLogin } from '@/types/input_login'
-import {
-  createHandleClearSingleInput,
-  createHandleSingleInput,
-} from '@/util/handler'
-import { useState } from 'react'
+import { KInputLogin, OInputLogin } from '@/types/input_login'
+import { createHandleClearInput, createHandleInput } from '@/util/handler'
+import { createEmptyObj } from '@/util/type'
+import { FormEvent, useState } from 'react'
 import { BsFillQuestionCircleFill } from 'react-icons/bs'
 import { IoArrowBack } from 'react-icons/io5'
-import { PiFinnTheHumanThin } from 'react-icons/pi'
+import { PiFinnTheHumanThin, PiLockKeyThin } from 'react-icons/pi'
 
 const ForgotPasswordPage = () => {
   // states
-  const [email, setEmail] = useState<string>()
+  const [authObj, setAuthObj] =
+    useState<Record<KInputLogin, string>>(createEmptyObj())
+
   const [hasVerifiedEmail, setHasVerifiedEmail] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [errMsg, setErrMsg] = useState<string>()
 
   // handlers
-  const handler = createHandleSingleInput(email, setEmail)
-  const clearHandler = createHandleClearSingleInput(setEmail)
+  const handler = createHandleInput(authObj, setAuthObj)
+  const clearHandler = createHandleClearInput(authObj, setAuthObj)
 
   // submit
-  const handleSubmit = () => {
-    // step-1
+  const handleSubmit = (e?: FormEvent) => {
+    e?.preventDefault()
+    setIsLoading(true)
 
-    // step-2
-    if (hasVerifiedEmail) {
+    // step-1
+    if (!hasVerifiedEmail) {
+      setHasVerifiedEmail(true)
     }
+    // step-2
+    else {
+    }
+
+    setIsLoading(false)
   }
 
   return (
@@ -45,7 +56,7 @@ const ForgotPasswordPage = () => {
 
         <form
           className="h-full"
-          onSubmit={() => {}}
+          onSubmit={handleSubmit}
         >
           <div className="flex flex-col h-full">
             <InputEmail
@@ -55,15 +66,34 @@ const ForgotPasswordPage = () => {
               icon={<PiFinnTheHumanThin />}
               onChange={handler}
               onClear={clearHandler}
-              value={email}
+              value={authObj.email}
+              disabled={hasVerifiedEmail}
             />
 
+            {hasVerifiedEmail && (
+              <InputPassword
+                className="mt-4"
+                id={OInputLogin.password}
+                name={OInputLogin.password}
+                placeholder="인증 번호를 입력하세요."
+                icon={<PiLockKeyThin />}
+                onChange={handler}
+                onClear={clearHandler}
+                value={authObj.password}
+              />
+            )}
+
             <div className="mt-auto">
+              <TextError
+                className="mb-2"
+                errMsg={errMsg}
+              />
               <Button
                 className="w-full flex justify-center"
                 type="submit"
+                isLoading={isLoading}
               >
-                이메일 인증하기
+                {hasVerifiedEmail ? '인증번호 입력' : '이메일 인증하기'}
               </Button>
 
               <LinkSmall

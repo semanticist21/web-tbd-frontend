@@ -7,6 +7,7 @@ import CheckBox from '@/components/common/checkbox'
 import InputEmail from '@/components/common/input_email'
 import InputPassword from '@/components/common/input_password'
 import LinkSmall from '@/components/common/link_small'
+import TextError from '@/components/common/text_error'
 import { ROUTES } from '@/routes/routes'
 import { KInputLogin, OInputLogin } from '@/types/input_login'
 import { useFormik } from 'formik'
@@ -94,7 +95,7 @@ const LoginPage = () => {
           content="회원가입 하기"
         />
 
-        <p className="text-red-500 text-xs text-center mt-1">{errMsg}</p>
+        <TextError errMsg={errMsg} />
 
         <div className="mt-auto flex flex-col space-y-3">
           <button className="relative bg-bg-naver h-12 rounded-md text-white text-sm hover:opacity-90 border border-transparent text-wrap">

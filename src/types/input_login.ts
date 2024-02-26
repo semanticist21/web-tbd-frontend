@@ -1,3 +1,4 @@
+// file for storing scheme of input login
 import { KeyOf } from '@/types/type'
 import { createMatchingObj, toReadOnly } from '@/util/type'
 

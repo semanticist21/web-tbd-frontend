@@ -23,6 +23,7 @@ const InputEmail = forwardRef<HTMLDivElement, InputEmailProps>(
       icon,
       onClear,
       invalid,
+      disabled,
     }: InputEmailProps,
     ref
   ) => {
@@ -44,6 +45,7 @@ const InputEmail = forwardRef<HTMLDivElement, InputEmailProps>(
           onChange={onChange}
           autoComplete="email"
           required
+          disabled={disabled}
         />
         <div className="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-2 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
           {icon}

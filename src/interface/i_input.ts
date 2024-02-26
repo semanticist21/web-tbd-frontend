@@ -6,4 +6,5 @@ export interface IInput {
   onChange?: ChangeEventHandler<HTMLInputElement>
   onClear?: (name?: string) => void
   invalid?: boolean
+  disabled?: boolean
 }
