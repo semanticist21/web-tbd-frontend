@@ -18,7 +18,7 @@ const InputPartialClearButton = forwardRef<
       className="absolute end-1 top-4 flex items-center peer-disabled:hidden hover:opacity-50 opacity-80 rounded-full"
       ref={ref}
       tabIndex={-1}
-      onClick={() => onClear?.(name)}
+      onMouseDown={() => onClear?.(name)}
     >
       <AiTwotoneCloseCircle />
     </button>

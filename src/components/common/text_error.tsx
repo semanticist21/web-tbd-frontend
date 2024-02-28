@@ -9,7 +9,7 @@ const TextError = ({ className, id, errMsg }: TextErrorProps) => {
   return (
     <p
       className={cn(
-        'text-red-500 text-xs text-center mt-2 font-semibold',
+        'text-red-500 text-sm text-center mt-2 font-semibold',
         errMsg ? 'block' : 'hidden',
         className
       )}

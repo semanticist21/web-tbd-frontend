@@ -9,7 +9,8 @@ import { ROUTES } from '@/routes/routes'
 import { KInputLogin, OInputLogin } from '@/types/input_login'
 import { createHandleClearInput, createHandleInput } from '@/util/handler'
 import { createEmptyObj } from '@/util/type'
-import { FormEvent, useState } from 'react'
+import { Duration } from 'luxon'
+import { FormEvent, useEffect, useRef, useState, useTransition } from 'react'
 import { BsFillQuestionCircleFill } from 'react-icons/bs'
 import { IoArrowBack } from 'react-icons/io5'
 import { PiFinnTheHumanThin, PiLockKeyThin } from 'react-icons/pi'
@@ -23,9 +24,19 @@ const ForgotPasswordPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [errMsg, setErrMsg] = useState<string>()
 
+  const [cntDown, setCntDown] = useState<number>(0)
+
+  const intervalId = useRef<NodeJS.Timeout>()
+  const [_isWait, startTransition] = useTransition()
+
   // handlers
   const handler = createHandleInput(authObj, setAuthObj)
   const clearHandler = createHandleClearInput(authObj, setAuthObj)
+
+  const formatCntDown = (seconds: number) => {
+    const mSec = Duration.fromMillis(seconds * 1000)
+    return mSec.toFormat('mm:ss')
+  }
 
   // submit
   const handleSubmit = (e?: FormEvent) => {
@@ -35,6 +46,15 @@ const ForgotPasswordPage = () => {
     // step-1
     if (!hasVerifiedEmail) {
       setHasVerifiedEmail(true)
+      setCntDown(60)
+
+      intervalId.current = setInterval(() => {
+        startTransition(() => {
+          setCntDown((prev) => prev - 1)
+        })
+      }, 1000)
+
+      //FIXME
     }
     // step-2
     else {
@@ -42,6 +62,13 @@ const ForgotPasswordPage = () => {
 
     setIsLoading(false)
   }
+
+  // use effect
+  useEffect(() => {
+    if (cntDown === 0 && intervalId.current) {
+      clearInterval(intervalId.current)
+    }
+  }, [cntDown])
 
   return (
     <div className="h-dvh flex items-center justify-center overflow-auto p-8">
@@ -66,21 +93,26 @@ const ForgotPasswordPage = () => {
               icon={<PiFinnTheHumanThin />}
               onChange={handler}
               onClear={clearHandler}
-              value={authObj.email}
+              value={authObj.email ?? ''}
               disabled={hasVerifiedEmail}
             />
 
             {hasVerifiedEmail && (
-              <InputPassword
-                className="mt-4"
-                id={OInputLogin.password}
-                name={OInputLogin.password}
-                placeholder="인증 번호를 입력하세요."
-                icon={<PiLockKeyThin />}
-                onChange={handler}
-                onClear={clearHandler}
-                value={authObj.password}
-              />
+              <div className="relative">
+                <InputPassword
+                  className="mt-4"
+                  id={OInputLogin.password}
+                  name={OInputLogin.password}
+                  placeholder="인증 번호를 입력하세요."
+                  icon={<PiLockKeyThin />}
+                  onChange={handler}
+                  onClear={clearHandler}
+                  value={authObj.password ?? ''}
+                />
+                <span className="absolute top-[50%] right-2 text-xs text-red-500">
+                  {formatCntDown(cntDown)}
+                </span>
+              </div>
             )}
 
             <div className="mt-auto">

@@ -1,4 +1,3 @@
-import InputPartialClearButton from './partial/input_partial_clear'
 import { IComponent } from '@/interface/i_component'
 import { IInput } from '@/interface/i_input'
 import { cn } from '@/util/cn'
