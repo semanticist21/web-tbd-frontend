@@ -1,9 +1,8 @@
 // file for storing scheme of input login
 import { KeyOf } from '@/types/type'
-import { createMatchingObj, toReadOnly } from '@/util/type'
+import { createMatchingObj } from '@/util/type'
 
 const loginKeys = ['email', 'password', 'retain'] as const
-const inputKeys = toReadOnly(...loginKeys)
 
-export type KInputLogin = KeyOf<typeof inputKeys>
+export type KInputLogin = KeyOf<typeof loginKeys>
 export const OInputLogin = createMatchingObj(...loginKeys)
