@@ -8,10 +8,11 @@
 
 :root {
   --fg-rgb: 0, 0, 0;
-  --bg-start-rgb: 233, 236, 239;
-  --bg-end-rgb: 233, 236, 239;
+  --bg-start-rgb: 30, 30, 32;
+  --bg-end-rgb: 25, 25, 25;
 }
 
+/* unused */
 @media (prefers-color-scheme: dark) {
   :root {
     --fg-rgb: 255, 255, 255;

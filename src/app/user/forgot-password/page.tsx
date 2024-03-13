@@ -106,10 +106,9 @@ const ForgotPasswordPage = () => {
                   placeholder="인증 번호를 입력하세요."
                   icon={<PiLockKeyThin />}
                   onChange={handler}
-                  onClear={clearHandler}
                   value={authObj.password ?? ''}
                 />
-                <span className="absolute top-[50%] right-2 text-xs text-red-500">
+                <span className="absolute top-[50%] right-2 text-xs text-red-500 select-none">
                   {formatCntDown(cntDown)}
                 </span>
               </div>
